@@ -102,16 +102,6 @@ class DatabaseHandler():
         except Exception:
             print(traceback.format_exc())
 
-    def getSorted(self):
-        a = []
-        self.cursor.execute("SELECT * FROM main")
-        this = self.cursor.fetchall()
-        for db in this:
-            data = json.loads(db[2])
-            a.append(data)
-        a = sorted(a, key=lambda x:x["Trophies"], reverse=True)
-        return a
-
 class ClubDatabaseHandler:
     def __init__(self):
         self.conn = sqlite3.connect("Database/Files/club.sqlite")
